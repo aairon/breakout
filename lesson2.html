@@ -82,10 +82,10 @@
             x += dx;
             y += dy;
 
-            if(rightPressed) {
+            if(rightPressed && paddleX < canvas.width-paddleWidth) {
                 paddleX += 4 ;
             }
-            else if(leftPressed) {
+            else if(leftPressed && paddleX > 0) {
                 paddleX -= 4;
             }
 
