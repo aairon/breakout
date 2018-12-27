@@ -21,10 +21,10 @@
 <body>
     <div class="add-info">
         <span class="rightfloat">
+            <script>//alert("Start");</script>
             Vars <span class="red">
                 <h1>
                     <span id="show-vars"></span>
-
                 </h1>
             </span>
         </span>
@@ -51,8 +51,8 @@
         var leftPressed = false;
 
         //bricks 
-        var brickRowCount = 19;
-        var brickColumnCount = 25;
+        var brickRowCount = 10;
+        var brickColumnCount = 13;
         var brickWidth = 25;
         var brickHeight = 20;
         var brickPadding = 10;
@@ -144,6 +144,7 @@
 
             x += dx;
             y += dy;
+                paddleX = x - 15;
             if(canvas.width - y < 5 && dy > 0) {
                 paddleX = x - 15;
             }
@@ -182,7 +183,7 @@
         document.addEventListener("keydown", keyDownHandler, false);
         document.addEventListener("keyup", keyUpHandler, false);
 
-        var interval = setInterval(draw, 0);
+        var interval = setInterval(draw, 10);
 
     </script>
 </body>
