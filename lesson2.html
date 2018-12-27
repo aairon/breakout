@@ -51,7 +51,7 @@
         var leftPressed = false;
 
         //bricks 
-        var brickRowCount = 9;
+        var brickRowCount = 19;
         var brickColumnCount = 25;
         var brickWidth = 25;
         var brickHeight = 20;
@@ -144,8 +144,10 @@
 
             x += dx;
             y += dy;
-            paddleX = x - 15;
-
+            if(canvas.width - y < 5 && dy > 0) {
+                paddleX = x - 15;
+            }
+            
             if (rightPressed && paddleX < canvas.width - paddleWidth) {
                 paddleX += 4;
             }
