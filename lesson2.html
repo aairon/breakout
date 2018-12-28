@@ -144,11 +144,11 @@
 
             x += dx;
             y += dy;
-                paddleX = x - 15;
-            if(canvas.width - y < 5 && dy > 0) {
+            paddleX = x - 15;
+            if (canvas.width - y < 5 && dy > 0) {
                 paddleX = x - 15;
             }
-            
+
             if (rightPressed && paddleX < canvas.width - paddleWidth) {
                 paddleX += 4;
             }
@@ -162,6 +162,14 @@
                 " dy:" + dy +
                 " x:" + x +
                 " y:" + y;
+
+            //bricks.forEach(brickrow => {
+            //console.log(brickrow);
+            //brickrow.forEach(brick => {
+            //console.log(brick);
+            //})
+            //});
+            //   alert("wait");
         }
 
         function keyDownHandler(e) {
