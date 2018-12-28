@@ -39,8 +39,9 @@
 
         var x = canvas.width / 2;
         var y = canvas.height - 30;
-        var dx = 2;
-        var dy = -2;
+        var inc = 5;
+        var dx = inc;
+        var dy = -inc;
 
         var ballRadius = 10;
 
@@ -167,8 +168,8 @@
                     else {
                         x = canvas.width / 2;
                         y = canvas.height - 30;
-                        dx = 2;
-                        dy = -2;
+                        dx = inc;
+                        dy = -inc;
                         paddleX = (canvas.width - paddleWidth) / 2;
                     }
                 }
@@ -209,6 +210,9 @@
             //})
             //});
             //   alert("wait");
+
+            requestAnimationFrame(draw);
+
         }
 
         function keyDownHandler(e) {
@@ -237,7 +241,7 @@
             }
         }
 
-        var interval = setInterval(draw, 7);
+        draw();
 
     </script>
 </body>
