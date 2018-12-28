@@ -61,6 +61,8 @@
 
         var score = 0;
 
+        var lives = 3;
+
         var bricks = [];
         for (var c = 0; c < brickColumnCount; c++) {
             bricks[c] = [];
@@ -69,11 +71,17 @@
             }
         }
 
+        function drawLives() {
+            ctx.font = "16px Arial";
+            ctx.fillStyle = "#0095DD";
+            ctx.fillText("Live: " + lives, canvas.width - 65, 20);
+        }
+
         function drawScore() {
             ctx.font = "16px Arial";
             ctx.fillStyle = "#0095DD";
             ctx.fillText("Score: " + score + " of " +
-                brickRowCount * brickHeight, 8, 20 );
+                brickRowCount * brickHeight, 8, 20);
         }
 
         function drawBricks() {
@@ -138,6 +146,7 @@
             drawPaddle();
             collisionDection();
             drawScore();
+            drawLives();
 
             if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
                 dx = -dx;
@@ -150,8 +159,18 @@
                     dy = -dy;
                 }
                 else {
-                    document.location.reload();
-                    alert("GAME OVER");
+                    lives--;
+                    if (!lives) {
+                        alert("GAME OVER");
+                        document.location.reload();
+                    }
+                    else {
+                        x = canvas.width / 2;
+                        y = canvas.height - 30;
+                        dx = 2;
+                        dy = -2;
+                        paddleX = (canvas.width - paddleWidth) / 2;
+                    }
                 }
             }
             //if (y + dy > canvas.height - ballRadius || y + dy < ballRadius) {
@@ -213,8 +232,8 @@
         document.addEventListener("mousemove", mouseMoveHandler, false);
         function mouseMoveHandler(e) {
             var relativeX = e.clientX - canvas.offsetLeft;
-            if(relativeX > 0 && relativeX < canvas.width){
-                paddleX = relativeX - paddleWidth/2;
+            if (relativeX > 0 && relativeX < canvas.width) {
+                paddleX = relativeX - paddleWidth / 2;
             }
         }
 
