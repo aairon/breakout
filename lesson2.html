@@ -105,8 +105,9 @@
                             score++;
 
                             if (score == brickColumnCount * brickRowCount) {
-                                alert("YOU WIN, CONRATULATIONS!")
                                 document.location.reload();
+                                alert("YOU WIN, CONRATULATIONS!")
+                                return;
                             }
                         }
                     }
@@ -149,8 +150,8 @@
                     dy = -dy;
                 }
                 else {
+                    document.location.reload();
                     alert("GAME OVER");
-                    document.location.reload()
                 }
             }
             //if (y + dy > canvas.height - ballRadius || y + dy < ballRadius) {
@@ -159,10 +160,14 @@
 
             x += dx;
             y += dy;
+
+            /* cheat */
+            /**
             paddleX = x - 15;
             if (canvas.width - y < 5 && dy > 0) {
                 paddleX = x - 15;
             }
+            */
 
             if (rightPressed && paddleX < canvas.width - paddleWidth) {
                 paddleX += 4;
@@ -205,8 +210,15 @@
         }
         document.addEventListener("keydown", keyDownHandler, false);
         document.addEventListener("keyup", keyUpHandler, false);
+        document.addEventListener("mousemove", mouseMoveHandler, false);
+        function mouseMoveHandler(e) {
+            var relativeX = e.clientX - canvas.offsetLeft;
+            if(relativeX > 0 && relativeX < canvas.width){
+                paddleX = relativeX - paddleWidth/2;
+            }
+        }
 
-        var interval = setInterval(draw, 0);
+        var interval = setInterval(draw, 7);
 
     </script>
 </body>
