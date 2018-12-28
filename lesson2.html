@@ -59,6 +59,7 @@
         var brickOffsetTop = 30;
         var brickOffsetLeft = 30;
 
+        var score = 0;
 
         var bricks = [];
         for (var c = 0; c < brickColumnCount; c++) {
@@ -66,6 +67,13 @@
             for (var r = 0; r < brickRowCount; r++) {
                 bricks[c][r] = { x: 0, y: 0, status: 1 };
             }
+        }
+
+        function drawScore() {
+            ctx.font = "16px Arial";
+            ctx.fillStyle = "#0095DD";
+            ctx.fillText("Score: " + score + " of " +
+                brickRowCount * brickHeight, 8, 20 );
         }
 
         function drawBricks() {
@@ -94,6 +102,12 @@
                         if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
                             dy = -dy;
                             b.status = 0;
+                            score++;
+
+                            if (score == brickColumnCount * brickRowCount) {
+                                alert("YOU WIN, CONRATULATIONS!")
+                                document.location.reload();
+                            }
                         }
                     }
                 }
@@ -122,6 +136,7 @@
             drawBall();
             drawPaddle();
             collisionDection();
+            drawScore();
 
             if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
                 dx = -dx;
@@ -191,7 +206,7 @@
         document.addEventListener("keydown", keyDownHandler, false);
         document.addEventListener("keyup", keyUpHandler, false);
 
-        var interval = setInterval(draw, 10);
+        var interval = setInterval(draw, 0);
 
     </script>
 </body>
