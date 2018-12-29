@@ -33,26 +33,38 @@
     <canvas id="myCanvas" width="480" height="623"></canvas>
 
     <script>
-
-        var canvas = document.getElementById("muCanvas")
+        //Javascript 
+        var canvas = document.getElementById("myCanvas");
         var ctx = canvas.getContext("2d");
 
-        <Obj></Obj>
-        var line = [];
-        var inc = [];
+        var line ;
+        line = {x: 10, y: 10, xx: 330, yy: 36, status: 1 };
 
-        inc[0] = {dx: 2, dy: 2, dxx: 2, dyy: 2};
-
-        line[0] = {x: 10, y: 10, xx: 30, yy: 30, status: 1 };
-        line[1] = {x: 10, y: 10, xx: 30, yy: 30, status: 0 };
-
-        drawBall => {
+        function drawLine(){
             ctx.beginPath();
-            ctx.arc(line[0].x, line[0]. y, ballRadius, 0, Math.PI * 2);
-            ctx.fillStyle = "#0095DD";
-            ctx.fill();
+            ctx.moveTo(line.x,line.y);
+            ctx.lineTo(line.xx,line.yy);
+            ctx.stroke(); 
             ctx.closePath();
         }
+
+        function moveLine(){
+
+            line.x += 5 ;
+            line.y += 5 ;
+
+        }
+
+        function draw(){
+
+            drawLine();
+            moveLine();
+
+            requestAnimationFrame(draw);
+        }
+
+
+        draw();
     
     </script>
 
