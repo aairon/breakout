@@ -36,8 +36,14 @@
 
         var canvas = document.getElementById("muCanvas")
         var ctx = canvas.getContext("2d");
-        var line = <Obj></Obj>
-        line[0]
+
+        var line = [];
+        var inc = [];
+
+        inc[0] = {dx: 2, dy: 2, dxx: 2, dyy: 2};
+
+        line[0] = {x: 10, y: 10, xx: 30, yy: 30, status: 1 };
+        line[1] = {x: 10, y: 10, xx: 30, yy: 30, status: 0 };
 
     
     
