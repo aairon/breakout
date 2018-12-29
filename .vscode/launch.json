@@ -9,7 +9,14 @@
                         "type": "chrome",
                         "request": "launch",
                         "name": "Launch Chrome against localhost",
-                        "url": "file:///Users/adsphr/git/breakout/lesson2.html",
+                        "url": "file:///Users/adsphr/git/breakout/qixx.html",
+                        "webRoot": "${workspaceFolder}"
+                },
+                {
+                        "type": "chrome",
+                        "request": "launch",
+                        "name": "Launch Chrome against localhost",
+                        "url": "file:///Users/adsphr/git/breakout/qixx.html",
                         "webRoot": "${workspaceFolder}"
                 }
         ]
