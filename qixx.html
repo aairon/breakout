@@ -34,13 +34,30 @@
 
     <script>
         //Javascript 
+        
+        var start = Date.now();
         var canvas = document.getElementById("myCanvas");
         var ctx = canvas.getContext("2d");
+        
+        var line = {x: 10, y: 10, xx: 330, yy: 36, status: 1 };
+        var inc = {x: 2, y:5 }
 
-        var line ;
-        line = {x: 10, y: 10, xx: 330, yy: 36, status: 1 };
+        const sleep = (milliseconds) => {
+            return new Promise(resolve => setTimeout(resolve, milliseconds))
+        }
 
-        function drawLine(){
+        function halt(seconds) {
+            start = Date.now();
+            millis = Date.now() - start;
+            etime = Math.floor(millis / 1000);
+
+            while (etime < seconds) {
+                millis = Date.now() - start;
+                etime = Math.floor(millis / 1000);
+            }
+        }
+
+        function drawLine(line){
             ctx.beginPath();
             ctx.moveTo(line.x,line.y);
             ctx.lineTo(line.xx,line.yy);
@@ -48,25 +65,30 @@
             ctx.closePath();
         }
 
-        function moveLine(){
+        function moveLine(line){
 
-            line.x += 5 ;
-            line.y += 5 ;
+            if (line.x >= canvas.width || line.x <= 0) {
+                inc.x = -inc.x;
+            }
+            if (line.y >= canvas.height|| line.y <= 0 ) {
+                inc.y = -inc.y;
+            }
+
+            line.x += inc.x ;
+            line.y += inc.y ;
+
+            return line;
 
         }
 
-        function draw(){
-
-            drawLine();
-            moveLine();
-
-            requestAnimationFrame(draw);
+        function draw(line){
+            drawLine(line);
+            line = moveLine(line);
+            requestAnimationFrame(draw(line));
         }
 
-
-        draw();
+        draw(line);
     
     </script>
-
 </body>
 
