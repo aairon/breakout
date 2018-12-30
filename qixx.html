@@ -40,19 +40,27 @@
         var ctx = canvas.getContext("2d");
 
         var line = { x: 10, y: 10, xx: 330, yy: 36, status: 1 };
-        var inc = { x: 2, y: 5 , xx: 2, yy: 6};
+        var inc = { x: 2, y: 5, xx: 2, yy: 10 };
+
+        const sleep = (milliseconds) => {
+            return new Promise(resolve => setTimeout(resolve, milliseconds))
+        }
 
         function drawLine() {
             ctx.beginPath();
             ctx.moveTo(line.x, line.y);
             ctx.lineTo(line.xx, line.yy);
+            ctx.strokeStyle = "#FF0000";
             ctx.stroke();
             ctx.closePath();
         }
 
         function draw() {
             //ctx.clearRect(0, 0, canvas.width, canvas.height);
+
             drawLine();
+
+            sleep(2000);
 
             line.x += inc.x;
             line.y += inc.y;
@@ -74,7 +82,9 @@
             }
         }
 
-        setInterval(draw, 150);
+        sleep(1000).then(() => {
+            setInterval(draw, 150)
+        })
 
     </script>
 </body>
