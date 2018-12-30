@@ -34,61 +34,47 @@
 
     <script>
         //Javascript 
-        
+
         var start = Date.now();
         var canvas = document.getElementById("myCanvas");
         var ctx = canvas.getContext("2d");
-        
-        var line = {x: 10, y: 10, xx: 330, yy: 36, status: 1 };
-        var inc = {x: 2, y:5 }
 
-        const sleep = (milliseconds) => {
-            return new Promise(resolve => setTimeout(resolve, milliseconds))
-        }
+        var line = { x: 10, y: 10, xx: 330, yy: 36, status: 1 };
+        var inc = { x: 2, y: 5 , xx: 2, yy: 6};
 
-        function halt(seconds) {
-            start = Date.now();
-            millis = Date.now() - start;
-            etime = Math.floor(millis / 1000);
-
-            while (etime < seconds) {
-                millis = Date.now() - start;
-                etime = Math.floor(millis / 1000);
-            }
-        }
-
-        function drawLine(line){
+        function drawLine() {
             ctx.beginPath();
-            ctx.moveTo(line.x,line.y);
-            ctx.lineTo(line.xx,line.yy);
-            ctx.stroke(); 
+            ctx.moveTo(line.x, line.y);
+            ctx.lineTo(line.xx, line.yy);
+            ctx.stroke();
             ctx.closePath();
         }
 
-        function moveLine(line){
+        function draw() {
+            //ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawLine();
+
+            line.x += inc.x;
+            line.y += inc.y;
+            line.xx += inc.xx;
+            line.yy += inc.yy;
 
             if (line.x >= canvas.width || line.x <= 0) {
                 inc.x = -inc.x;
             }
-            if (line.y >= canvas.height|| line.y <= 0 ) {
+            if (line.y >= canvas.height || line.y <= 0) {
                 inc.y = -inc.y;
             }
 
-            line.x += inc.x ;
-            line.y += inc.y ;
-
-            return line;
-
+            if (line.xx >= canvas.width || line.xx <= 0) {
+                inc.xx = -inc.xx;
+            }
+            if (line.yy >= canvas.height || line.yy <= 0) {
+                inc.yy = -inc.yy;
+            }
         }
 
-        function draw(line){
-            drawLine(line);
-            line = moveLine(line);
-            requestAnimationFrame(draw(line));
-        }
+        setInterval(draw, 150);
 
-        draw(line);
-    
     </script>
 </body>
-
