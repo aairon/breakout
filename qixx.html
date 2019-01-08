@@ -30,7 +30,7 @@
         </span>
     </div>
 
-    <canvas id="myCanvas" width="480" height="623"></canvas>
+    <canvas id="myCanvas" width="1280" height="1000"></canvas>
 
     <script>
         //Javascript 
@@ -39,8 +39,11 @@
         var canvas = document.getElementById("myCanvas");
         var ctx = canvas.getContext("2d");
 
-        var line = { x: 10, y: 10, xx: 330, yy: 36, status: 1 };
-        var inc = { x: 2, y: 5, xx: 2, yy: 10 };
+        var line;
+        var inc;
+
+        line = { x: 10, y: 10, xx: 330, yy: 36, status: 1 };
+        inc = { x: 2, y: 5, xx: 2, yy: 10 };
 
         const sleep = (milliseconds) => {
             return new Promise(resolve => setTimeout(resolve, milliseconds))
@@ -58,9 +61,7 @@
         function draw() {
             //ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            drawLine();
-
-            sleep(2000);
+            drawLine(line);
 
             line.x += inc.x;
             line.y += inc.y;
@@ -82,9 +83,7 @@
             }
         }
 
-        sleep(1000).then(() => {
-            setInterval(draw, 150)
-        })
+        setInterval(draw,10);
 
     </script>
 </body>
