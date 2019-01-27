@@ -45,23 +45,25 @@
 
         line = { x: 10, y: 10, xx: 330, yy: 36, status: 1 };
         inc = { x: 2, y: 5, xx: 2, yy: 10 };
+        clr = "#FF0000";
 
         line2 = { x: 10, y: 10, xx: 330, yy: 36, status: 1 };
         inc2 = { x: 2, y: 5, xx: 2, yy: 10 };
+        clr2 = "white";
 
         function draw() {
-            drawLine(line);
+            drawLine(line,inc,clr);
             cnt = cnt + 1;
-            if (cnt > 10) {
-                drawLine(line2);
+            if (cnt > 50) {
+                drawLine(line2,inc2,clr2);
             }
         }
 
-        function drawLine(line) {
+        function drawLine(line,inc,clr) {
             ctx.beginPath();
             ctx.moveTo(line.x, line.y);
             ctx.lineTo(line.xx, line.yy);
-            ctx.strokeStyle = "#FF0000";
+            ctx.strokeStyle = clr ;
             ctx.stroke();
             ctx.closePath();
 
@@ -89,7 +91,7 @@
             //return line;
         }
 
-        setInterval(draw, 10);
+        setInterval(draw, 1);
 
     </script>
 </body>
