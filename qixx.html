@@ -41,16 +41,20 @@
 
         var line;
         var inc;
+        var cnt = 0;
 
         line = { x: 10, y: 10, xx: 330, yy: 36, status: 1 };
         inc = { x: 2, y: 5, xx: 2, yy: 10 };
 
-        const sleep = (milliseconds) => {
-            return new Promise(resolve => setTimeout(resolve, milliseconds))
-        }
+        line2 = { x: 10, y: 10, xx: 330, yy: 36, status: 1 };
+        inc2 = { x: 2, y: 5, xx: 2, yy: 10 };
 
-        function draw(){
+        function draw() {
             drawLine(line);
+            cnt = cnt + 1;
+            if (cnt > 10) {
+                drawLine(line2);
+            }
         }
 
         function drawLine(line) {
@@ -85,7 +89,7 @@
             //return line;
         }
 
-        setInterval(draw,10);
+        setInterval(draw, 10);
 
     </script>
 </body>
