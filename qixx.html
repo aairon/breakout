@@ -49,19 +49,19 @@
             return new Promise(resolve => setTimeout(resolve, milliseconds))
         }
 
-        function drawLine() {
+        function draw(){
+            drawLine(line);
+        }
+
+        function drawLine(line) {
             ctx.beginPath();
             ctx.moveTo(line.x, line.y);
             ctx.lineTo(line.xx, line.yy);
             ctx.strokeStyle = "#FF0000";
             ctx.stroke();
             ctx.closePath();
-        }
 
-        function draw() {
             //ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            drawLine(line);
 
             line.x += inc.x;
             line.y += inc.y;
@@ -81,6 +81,8 @@
             if (line.yy >= canvas.height || line.yy <= 0) {
                 inc.yy = -inc.yy;
             }
+
+            //return line;
         }
 
         setInterval(draw,10);
