@@ -11,7 +11,7 @@
         }
 
         canvas {
-            background: #eee;
+            background: rgb(4, 4, 46);
             display: block;
             margin: 0 auto;
         }
@@ -30,7 +30,7 @@
         </span>
     </div>
 
-    <canvas id="myCanvas" width="1280" height="1000"></canvas>
+    <canvas id="myCanvas" width="1200" height="500"></canvas>
 
     <script>
         //Javascript 
@@ -45,18 +45,18 @@
 
         line = { x: 10, y: 10, xx: 330, yy: 36, status: 1 };
         inc = { x: 2, y: 5, xx: 2, yy: 10 };
-        clr = "#FF0000";
+        clr = "lightgreen";
 
         line2 = { x: 10, y: 10, xx: 330, yy: 36, status: 1 };
         inc2 = { x: 2, y: 5, xx: 2, yy: 10 };
-        clr2 = "white";
+        clr2 = "black";
 
         function draw() {
-            drawLine(line,inc,clr);
-            cnt = cnt + 1;
-            if (cnt > 50) {
+            if (cnt > 77) {
                 drawLine(line2,inc2,clr2);
             }
+            drawLine(line,inc,clr);
+            cnt = cnt + 1;
         }
 
         function drawLine(line,inc,clr) {
@@ -91,7 +91,7 @@
             //return line;
         }
 
-        setInterval(draw, 1);
+        setInterval(draw, 55);
 
     </script>
 </body>
